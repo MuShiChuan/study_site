@@ -1,8 +1,8 @@
 <template>
     <div style="display: block!important;height: 420px">
         <div class="courseClassContainer">
-            <h3 @click="m">课程大类</h3>
-            <el-button style="margin: 10px 10px;width: 126px" v-bind:key="user.id" v-for="user in gridData" type="info">{{ user.name }}</el-button>
+            <h3>课程大类</h3>
+            <el-button style="margin: 10px 10px;width: 126px" v-bind:key="user.id" @click="m(user.id)" v-for="user in gridData" type="info">{{ user.name }}</el-button>
         </div>
     </div>
 </template>
@@ -17,7 +17,7 @@
             }
         },
         methods:{
-            m(){
+            m(data){
                 console.log(data)
             }
         }

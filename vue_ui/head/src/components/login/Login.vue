@@ -1,13 +1,13 @@
 <template>
         <el-tabs :stretch="true" v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="邮箱登录" name="first">
-                <EmailLogin @setComName="setComName"></EmailLogin>
+                <EmailLogin @setLogin="setLogin" :validator_rules="validator_rules" @setComName="setComName"></EmailLogin>
             </el-tab-pane>
             <el-tab-pane label="手机号登录" name="second">
-                <PhoneLogin @setComName="setComName"></PhoneLogin>
+                <PhoneLogin @setLogin="setLogin" :validator_rules="validator_rules" @setComName="setComName"></PhoneLogin>
             </el-tab-pane>
             <el-tab-pane label="账号登录" name="third">
-                <AccountLogin @setComName="setComName"></AccountLogin>
+                <AccountLogin @setLogin="setLogin" :validator_rules="validator_rules" @setComName="setComName"></AccountLogin>
             </el-tab-pane>
         </el-tabs>
 </template>
@@ -25,7 +25,7 @@
             }
         },
         props:[
-            'visible'
+            'visible','validator_rules'
         ],
         methods:{
             handleClick(tab) {
@@ -33,6 +33,9 @@
             },
             setComName(Name){
                 this.$emit('setComName',Name)
+            },
+            setLogin(isLogin){
+                this.$emit('setLogin',isLogin)
             }
         },
         watch:{
@@ -46,7 +49,7 @@
                 }
             },
             'activeName':function (n,o) {
-                console.log(o + '---->' + n)
+                // console.log(o + '---->' + n)
                 var i = 0;
                 (o==='first') ? (i = 1) :
                     (o==='second') ? (i = 2) :
@@ -63,6 +66,5 @@
 </script>
 
 <style scoped>
-
 
 </style>

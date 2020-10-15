@@ -1,19 +1,15 @@
 <template>
     <div style="width: 80%;margin: 0 auto">
-        <el-form class="demo-ruleForm" ref="form" :model="form" label-width="80px">
+        <el-form status-icon class="demo-ruleForm" ref="form" :model="form" label-width="80px">
             <el-form-item
                     prop="name"
-                    :rules="[
-                      { required: true, message: '手机号不能为空'}
-                    ]"
+                    :rules="validator_rules.phone"
                     :label-width="formLabelWidth">
                 <el-input placeholder="请输入手机号" v-model="form.name" prefix-icon="el-icon-mobile-phone" clearable></el-input>
             </el-form-item>
             <el-form-item
                     prop="password"
-                    :rules="[
-                      { required: true, message: '密码不能为空'}
-                    ]"
+                    :rules="validator_rules.password"
                     :label-width="formLabelWidth">
                 <el-input placeholder="请输入密码" v-model="form.password" prefix-icon="el-icon-lock" show-password clearable></el-input>
             </el-form-item>
@@ -38,11 +34,12 @@
                 formLabelWidth: '0px'
             }
         },
+        props:['validator_rules'],
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('submit!');
+                        this.$emit('setLogin',true)
                     } else {
                         console.log('error submit!!');
                         return false;
@@ -60,14 +57,8 @@
 </script>
 
 <style scoped>
-    .el-button{
-        width: 100%;
-    }
     span{
         float: right;
         transform: translateY(-10px);
-    }
-    form{
-        padding-top: 10px;
     }
 </style>
