@@ -5,7 +5,14 @@
       <img width="370" height="44" src="./assets/logo.png" alt="延安大学西安创新学院精品课程网">
     </el-menu-item>
     <el-menu-item  v-popover:popover index="2">课程</el-menu-item>
-
+    <el-popover
+            ref="popover"
+            placement="bottom-start"
+            title=""
+            width="760"
+            trigger="hover">
+      <CourseClassContainer></CourseClassContainer>
+    </el-popover>
     <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">学院</a></el-menu-item>
     <el-menu-item class="nav_right" index="4">登录  |  注册
 <!--      <Login_register></Login_register>-->
@@ -22,7 +29,7 @@
 
 <script>
 
-
+import CourseClassContainer from "./components/CourseClassContainer";
 export default {
   name: 'App',
   data() {
@@ -36,6 +43,7 @@ export default {
     }
   },
   components: {
+    CourseClassContainer
   }
 }
 </script>
