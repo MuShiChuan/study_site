@@ -14,8 +14,8 @@
       <CourseClassContainer></CourseClassContainer>
     </el-popover>
     <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">学院</a></el-menu-item>
-    <el-menu-item class="nav_right" index="4">登录  |  注册
-<!--      <Login_register></Login_register>-->
+    <el-menu-item class="nav_right" index="4">
+      <Login_register></Login_register>
     </el-menu-item>
     <el-menu-item class="nav_right" index="5">
       <el-input id="input_search" placeholder="请输入内容" v-model="input3" class="input-with-select">
@@ -30,6 +30,7 @@
 <script>
 
 import CourseClassContainer from "./components/CourseClassContainer";
+import Login_register from "./components/login_register";
 export default {
   name: 'App',
   data() {
@@ -43,6 +44,7 @@ export default {
     }
   },
   components: {
+    Login_register,
     CourseClassContainer
   }
 }
